@@ -1,0 +1,22 @@
+// useFetch hook.
+import useFetch from "../hooks/useFetch";
+// Import Components.
+import ProductSlider from "./ProductSlider";
+
+const RelatedProducts = ({categoryTitle}) => {
+  // Get products by category title.
+
+
+  const {data} = useFetch(`/products?populate=*&filters[categories][title]=${categoryTitle}`);
+
+  return (
+    <div className="mb-16">
+      <div className="container mx-auto">
+        <h2 className="h2 mb-6 text-center xl:text-left">Related Products</h2>
+        <ProductSlider data={data}/>
+      </div>
+    </div>
+  )
+}
+
+export default RelatedProducts
